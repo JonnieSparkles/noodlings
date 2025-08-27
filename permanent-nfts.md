@@ -171,7 +171,7 @@ Marketplace (OpenSea, etc.) → Verify with Wayfinder/ViewBlock
 - **Test manifest paths** in a browser before updating your contract.  
 - **Keep images and metadata separate** in organized folders.  
 - For collections, use manifests at both levels (`/images`, `/metadata`).  
-- Consider registering an **ArNS name** for user-friendly access (e.g., `gallery.ar-io.dev`).  
+- Consider registering an **ArNS name** for user-friendly access (e.g., `gallery.ar.io`).  
 
 ---
 
