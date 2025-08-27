@@ -13,17 +13,30 @@ Most NFTs today store their media files on centralized servers or semi-permanent
 
 ---
 
-## 2. Core Concepts  
+## 2. TL;DR – How to Create an Unruggable NFT  
 
-### 2.1 Arweave Storage  
+1. **Upload your assets (images, video, JSON)** to Arweave via **ArDrive**.  
+2. **Create a manifest** for `/images` → gives you clean URLs like `https://arweave.net/<manifest_TxID>/1.png`.  
+3. **Update your metadata JSON** to point to those image URLs.  
+4. **Upload metadata JSON files** into `/metadata` and **create a manifest**.  
+5. **Use the metadata manifest TxID** as the `baseURI` in your NFT smart contract.  
+6. **Verify** on OpenSea or other marketplaces — assets will load from **Arweave**, permanently.  
+7. **Best practice**: publish both `ar://` links (future-proof, gateway-agnostic) and `https://arweave.net/...` links (current compatibility).
+8. #BeUnruggable  
+
+---
+
+## 3. Core Concepts  
+
+### 3.1 Arweave Storage  
 - Pay once, store forever.  
 - Miners are incentivized to keep multiple replicas available via **Succinct Proofs of Access**.  
 
-### 2.2 Transaction IDs (TxIDs)  
+### 3.2 Transaction IDs (TxIDs)  
 - Every file uploaded gets a **TxID** (a permanent reference).  
 - TxIDs are immutable - they never change or expire.  
 
-### 2.3 Manifests  
+### 3.3 Manifests  
 - Manifests (ANS-104) act like a “folder” on the permaweb.  
 - They allow you to access files by name, e.g.:  
   ```
@@ -32,24 +45,24 @@ Most NFTs today store their media files on centralized servers or semi-permanent
   ```  
 - Essential for NFT collections (images + JSON metadata).  
 
-### 2.4 Bundling  
+### 3.4 Bundling  
 - Bundlers like **Turbo** group many uploads into one transaction.  
 - Keeps costs extremely low and enables fast, scalable writes.  
 
-### 2.5 Wander (Wallet)  
+### 3.5 Wander (Wallet)  
 - Formerly ArConnect.  
 - A browser extension wallet for signing and funding Arweave transactions.  
 
-### 2.6 Arweave Name System (ArNS)  
+### 3.6 Arweave Name System (ArNS)  
 - Human-readable names for NFTs and collections.  
 - Can be leased or permanently purchased.  
 - Optional, but improves accessibility (e.g., `ar://myproject`) and allows for mutable references in immutable contracts.  
 
-### 2.7 Wayfinder Protocol  
+### 3.7 Wayfinder Protocol  
 - Resolves `ar://` links across gateways.  
 - Enables verifiable retrieval - no need to trust a single server.  
 
-## 2.8 The `ar://` Protocol
+## 3.8 The `ar://` Protocol
 
 - `ar://` is a **gateway-agnostic URI scheme** for referencing Arweave data.
 - Instead of hardcoding `https://arweave.net/<TxID>`, you can reference: `ar://<TxID> ar://<manifest_TxID>/1.json`
@@ -79,7 +92,7 @@ Most NFTs today store their media files on centralized servers or semi-permanent
 
 ---
 
-## 3. Tools You’ll Use  
+## 4. Tools You’ll Use  
 - **Wander** → wallet to hold AR and sign transactions.  
 - **ArDrive** → user-friendly app to upload images, metadata, and manifests.  
 - **Turbo** → bundling service for fast, cheap uploads.  
@@ -89,7 +102,7 @@ Most NFTs today store their media files on centralized servers or semi-permanent
 
 ---
 
-## 4. Step-by-Step: Creating a Permanent NFT  
+## 5. Step-by-Step: Creating a Permanent NFT  
 
 ### Step 1. Prepare Wallet + AR  
 - Install **Wander** wallet.  
@@ -181,7 +194,7 @@ Example Metadata Manifest (simplified):
 
 ---
 
-## 5. Workflow Summary (Text Diagram)  
+## 6. Workflow Summary (Text Diagram)  
 
 ```
 Assets (images, video, JSON)
@@ -201,7 +214,7 @@ Marketplace (OpenSea, etc.) → Verify with Wayfinder/ViewBlock
 
 ---
 
-## 6. Best Practices  
+## 7. Best Practices  
 - **Always use TxIDs or manifests** as permanent references.  
 - **Avoid using ArDrive share links directly** - they’re convenience UI links, not permanent identifiers.  
 - **Test manifest paths** in a browser before updating your contract.  
@@ -211,12 +224,14 @@ Marketplace (OpenSea, etc.) → Verify with Wayfinder/ViewBlock
 
 ---
 
-## 7. Conclusion  
+## 8. Conclusion  
 Unruggable NFTs aren’t just collectibles - they’re durable digital artifacts. By storing assets on Arweave, bundling them with Turbo, verifying them through Wayfinder, and optionally naming them with ArNS, creators ensure their NFTs are accessible, verifiable, and resilient across time, gateways, and regions.
 
 This approach upgrades NFTs from temporary hype to permanent cultural records on the permaweb - immune to storage loss, link rot, or gateway shutdowns.
 
 ---
 
-## 8. Additional Resources
-Coming soon^tm
+## 9. Additional Resources
+- [docs.ar.io](https://docs.ar.io)  
+- [docs.ardrive.io](https://docs.ardrive.io)  
+- More coming soon^tm
