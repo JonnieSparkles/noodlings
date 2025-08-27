@@ -1,13 +1,14 @@
-# Creating Permanent NFTs with Arweave + AR.IO  
+# Creating Unruggable NFTs with Arweave + AR.IO 
+*Permanent, durable, and verifiable digital assets for the permaweb*  
 
 ## 1. Why Permanent NFTs Matter  
-Most NFTs today store their media files on centralized servers or semi-permanent networks like IPFS. These solutions rely on someone continuing to “pin” or pay for storage. If that stops, the NFT may point to a file that no longer exists.  
+Most NFTs today store their media files on centralized servers or semi-permanent networks like IPFS. These solutions rely on someone continuing to “pin” or pay for storage. If that stops, the NFT may point to a file that no longer exists. Even if the data still exists somewhere, specific domain links can rot or become inaccessible if a URL shuts down, a project discontinues service, DNS records change, or due to regional restrictions.
 
-**A permanent NFT** solves this by ensuring:  
+**An Unruggable NFT** solves this by ensuring:  
 
 - **Permanent asset storage** – media and metadata live forever on **Arweave**, secured by its storage endowment.  
 - **Permanent ownership** – blockchains like Ethereum, Polygon, or Solana record the transfer of ownership permanently.  
-- **Permanent access** – the **AR.IO gateway network** and **Wayfinder protocol** ensure data can always be retrieved from multiple sources, independent of any single server.  
+- **Permanent access** – the **AR.IO Network** and **Wayfinder protocol** ensure data can always be retrieved from multiple sources, independent of any single server.  
 - **Verifiability** – anyone can independently confirm that the NFT’s data hasn’t changed by resolving it with `ar://` links through Wayfinder.  
 
 ---
@@ -20,7 +21,7 @@ Most NFTs today store their media files on centralized servers or semi-permanent
 
 ### 2.2 Transaction IDs (TxIDs)  
 - Every file uploaded gets a **TxID** (a permanent reference).  
-- TxIDs are immutable — they never change or expire.  
+- TxIDs are immutable - they never change or expire.  
 
 ### 2.3 Manifests  
 - Manifests (ANS-104) act like a “folder” on the permaweb.  
@@ -46,7 +47,7 @@ Most NFTs today store their media files on centralized servers or semi-permanent
 
 ### 2.7 Wayfinder Protocol  
 - Resolves `ar://` links across gateways.  
-- Enables verifiable retrieval — no need to trust a single server.  
+- Enables verifiable retrieval - no need to trust a single server.  
 
 ## 2.8 The `ar://` Protocol
 
@@ -105,8 +106,25 @@ Most NFTs today store their media files on centralized servers or semi-permanent
 ### Step 3. Create a Manifest  
 - In ArDrive, create a **Manifest File** for `/images`.  
 	- Click New>Advanced>Manifest and navigate the the images folder
-- This groups all image TxIDs into one entry point.  
-- Example usage:  
+- This groups all image TxIDs into one entry point.
+- Example Manifest (simplified):
+ ```json  
+{
+  "manifest": "arweave/paths",
+  "version": "0.2.0",
+  "index": {
+    "path": "1.png"
+  },
+  "paths": {
+    "1.png": {
+      "id": "PLVeIFonJpML_jNL4nHM1hMI714723Ab53tmMwzpYD8"
+    },
+    "2.png": {
+      "id": "w4H-Hv5JNpgF86NlbRDqpnMObOXHVD0U6PIv8PgW7Uo"
+    }
+  }
+ ```  
+- This manifest means you can now reference images by name:
   ```
   https://arweave.net/<manifest_TxID>/1.png
   https://arweave.net/<manifest_TxID>/25.png
@@ -127,7 +145,25 @@ Most NFTs today store their media files on centralized servers or semi-permanent
 - Upload all metadata JSON files into `/metadata`.  
 - Create a **Manifest File** for `/metadata`.
   - Click New>Advanced>Manifest and navigate to the Metadata folder
-- This gives you a single **metadata manifest TxID**.  
+Example Metadata Manifest (simplified):
+ ```json  
+{
+  "manifest": "arweave/paths",
+  "version": "0.2.0",
+  "index": {
+    "path": "1.json"
+  },
+  "paths": {
+    "1.json": {
+      "id": "kwoN-mtS5jEEzsB6xn9breiWuSYb15OMOLfTkL75480"
+    },
+    "2.json": {
+      "id": "yglJ_xpJWMKLug_dBZPQgPYR5AildczqEWfw5I3OTqU"
+    }
+  }
+}
+ ```  
+- **Your metadata manifest TxID is what you’ll plug into the NFT smart contract as the baseURI.**
 
 ### Step 6. Point Your Smart Contract  
 - In your NFT smart contract (ERC-721/1155), update the **baseURI** to:  
@@ -167,7 +203,7 @@ Marketplace (OpenSea, etc.) → Verify with Wayfinder/ViewBlock
 
 ## 6. Best Practices  
 - **Always use TxIDs or manifests** as permanent references.  
-- **Don't ArDrive share links directly** — they’re convenience UI links, not permanent identifiers.  
+- **Avoid using ArDrive share links directly** - they’re convenience UI links, not permanent identifiers.  
 - **Test manifest paths** in a browser before updating your contract.  
 - **Keep images and metadata separate** in organized folders.  
 - For collections, use manifests at both levels (`/images`, `/metadata`).  
@@ -183,6 +219,6 @@ Marketplace (OpenSea, etc.) → Verify with Wayfinder/ViewBlock
 ---
 
 ## 8. Conclusion  
-Permanent NFTs aren’t just collectibles — they’re **durable digital artifacts**. By storing assets on **Arweave**, bundling them with **Turbo**, verifying them through **Wayfinder**, and optionally naming them with **ArNS**, creators ensure their NFTs are accessible and verifiable **forever**.  
+Unruggable NFTs aren’t just collectibles - they’re durable digital artifacts. By storing assets on Arweave, bundling them with Turbo, verifying them through Wayfinder, and optionally naming them with ArNS, creators ensure their NFTs are accessible, verifiable, and resilient across time, gateways, and regions.
 
-This approach upgrades NFTs from temporary hype to **permanent cultural records** on the permaweb.  
+This approach upgrades NFTs from temporary hype to permanent cultural records on the permaweb - immune to storage loss, link rot, or gateway shutdowns.
