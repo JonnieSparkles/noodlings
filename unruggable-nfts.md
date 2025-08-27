@@ -222,3 +222,8 @@ Marketplace (OpenSea, etc.) → Verify with Wayfinder/ViewBlock
 Unruggable NFTs aren’t just collectibles - they’re durable digital artifacts. By storing assets on Arweave, bundling them with Turbo, verifying them through Wayfinder, and optionally naming them with ArNS, creators ensure their NFTs are accessible, verifiable, and resilient across time, gateways, and regions.
 
 This approach upgrades NFTs from temporary hype to permanent cultural records on the permaweb - immune to storage loss, link rot, or gateway shutdowns.
+
+---
+
+## 9. Additional Resources
+Coming soon^tm
