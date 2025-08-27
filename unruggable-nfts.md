@@ -233,5 +233,6 @@ This approach upgrades NFTs from temporary hype to permanent cultural records on
 
 ## 9. Additional Resources
 - [docs.ar.io](https://docs.ar.io)  
-- [docs.ardrive.io](https://docs.ardrive.io)  
+- [docs.ardrive.io](https://docs.ardrive.io)
+- [HashLips Video Guide](https://www.youtube.com/watch?v=MTSPjmCmdqs)
 - More coming soon^tm
