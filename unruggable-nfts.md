@@ -188,11 +188,11 @@ Assets (images, video, JSON)
         ↓
 Upload via ArDrive (uses Turbo for bundling)
         ↓
-Create Manifest (TxID entry point for assets)
+Create Images Manifest (TxID entry point for assets)
         ↓
 Update Metadata JSON → point to manifest paths
         ↓
-Upload Metadata + Create Manifest
+Upload Metadata + Create Metadata Manifest
         ↓
 Smart Contract (setBaseURI to metadata manifest TxID)
         ↓
