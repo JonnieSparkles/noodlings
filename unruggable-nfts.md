@@ -236,4 +236,5 @@ This approach upgrades NFTs from temporary hype to permanent cultural records on
 - [docs.ardrive.io](https://docs.ardrive.io)
 - [HashLips Video Guide](https://www.youtube.com/watch?v=MTSPjmCmdqs)
 - [Can you store NFTs on Arweave?](https://ardrive.io/can-you-store-nfts-on-arweave)
+- [Arweave and NFT Metadata](https://ardrive.io/arweave-and-nft-metadata)
 - More coming soon^tm
