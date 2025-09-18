@@ -16,7 +16,7 @@ Most NFTs today store their media files on centralized servers or semi-permanent
 ## 2. TL;DR – How to Create an Unruggable NFT  
 
 1. **Upload your assets (images, video, JSON)** to Arweave via **ArDrive**.  
-2. **Create a manifest** for `/images` → gives you clean URLs like `https://arweave.net/<manifest_TxID>/1.png`.  
+2. **Create a manifest** for `/images` → gives you clean URLs like `https://arweave.net/<manifest_dataTxID>/1.png`.  
 3. **Update your metadata JSON** to point to those image URLs.  
 4. **Upload metadata JSON files** into `/metadata` and **create a manifest**.  
 5. **Use the metadata manifest TxID** as the `baseURI` in your NFT smart contract.  
@@ -40,8 +40,8 @@ Most NFTs today store their media files on centralized servers or semi-permanent
 - Manifests (ANS-104) act like a “folder” on the permaweb.  
 - They allow you to access files by name, e.g.:  
   ```
-  https://arweave.net/<manifest_TxID>/1.png
-  https://arweave.net/<manifest_TxID>/metadata/1.json
+  https://arweave.net/<manifest_dataTxID>/1.png
+  https://arweave.net/<manifest_dataTxID>/metadata/1.json
   ```  
 - Essential for NFT collections (images + JSON metadata).  
 
@@ -65,7 +65,7 @@ Most NFTs today store their media files on centralized servers or semi-permanent
 ## 3.8 The `ar://` Protocol
 
 - `ar://` is a **gateway-agnostic URI scheme** for referencing Arweave data.
-- Instead of hardcoding `https://arweave.net/<TxID>`, you can reference: `ar://<TxID> ar://<manifest_TxID>/1.json`
+- Instead of hardcoding `https://arweave.net/<TxID>`, you can reference: `ar://<TxID> ar://<manifest_dataTxID>/1.json`
 - Benefits:
     - **Gateway independence** – works across any AR.IO gateway.
 	- **Wayfinder compatibility** – ensures retrieval can be verified from multiple sources, not just one server.
@@ -83,9 +83,9 @@ Most NFTs today store their media files on centralized servers or semi-permanent
 {   
 	"name": "Clone #1",   
 	"description": "An NFT from the Nerdy Coda Clone series",   
-	"image": "ar://<image_manifest_TxID>/1.png",   
+	"image": "ar://<image_manifest_dataTxID>/1.png",   
 	"properties": {     
-		"compatibility_fallback": "https://arweave.net/<image_manifest_TxID>/1.png"
+		"compatibility_fallback": "https://arweave.net/<image_manifest_dataTxID>/1.png"
 	} 
 }
 ```
@@ -139,8 +139,8 @@ Most NFTs today store their media files on centralized servers or semi-permanent
  ```  
 - This manifest means you can now reference images by name:
   ```
-  https://arweave.net/<manifest_TxID>/1.png
-  https://arweave.net/<manifest_TxID>/25.png
+  https://arweave.net/<manifest_dataTxID>/1.png
+  https://arweave.net/<manifest_dataTxID>/25.png
   ```  
 
 ### Step 4. Update Metadata JSON  
@@ -149,7 +149,7 @@ Most NFTs today store their media files on centralized servers or semi-permanent
   {
     "name": "Clone #1",
     "description": "An NFT from the Nerdy Coda Clone series",
-    "image": "https://arweave.net/<image_manifest_TxID>/1.png"
+    "image": "https://arweave.net/<image_manifest_dataTxID>/1.png"
   }
   ```  
 - Scripts can batch-update thousands of JSON files automatically.  
@@ -181,11 +181,11 @@ Example Metadata Manifest (simplified):
 ### Step 6. Point Your Smart Contract  
 - In your NFT smart contract (ERC-721/1155), update the **baseURI** to:  
   ```
-  https://arweave.net/<metadata_manifest_TxID>/
+  https://arweave.net/<metadata_manifest_dataTxID>/
   ```  
 - Each token will automatically resolve to its JSON file:  
-  - Token #1 → `<manifest_TxID>/1.json`  
-  - Token #2 → `<manifest_TxID>/2.json`  
+  - Token #1 → `<manifest_dataTxID>/1.json`  
+  - Token #2 → `<manifest_dataTxID>/2.json`  
 
 ### Step 7. Verify in the Marketplace  
 - Refresh metadata in OpenSea or your marketplace of choice.  
